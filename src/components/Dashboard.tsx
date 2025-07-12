@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
 
   const fetchClassrooms = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/classroom', {
+      const res = await fetch('https://api.markmarketing.xyz/api/classroom', {
         credentials: 'include',
       });
       const data = await res.json();
@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
     if (!classroomName.trim()) return;
     setIsLoading(true);
     try {
-      const res = await fetch('http://localhost:8080/api/classroom/create', {
+      const res = await fetch('https://api.markmarketing.xyz/api/classroom/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: classroomName }),
@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
 
   const startClassroom = async (classroom: Classroom) => {
     try {
-      await fetch(`http://localhost:8080/api/classroom/${classroom.code}/start`, {
+      await fetch(`https://api.markmarketing.xyz/api/classroom/${classroom.code}/start`, {
         method: 'POST',
         credentials: 'include',
       });

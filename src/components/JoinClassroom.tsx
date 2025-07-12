@@ -12,7 +12,7 @@ const JoinClassroom: React.FC = () => {
     if (!name.trim() || !code.trim()) return;
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:8080/api/user/register', {
+      const response = await fetch('https://api.markmarketing.xyz/api/user/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, code }),

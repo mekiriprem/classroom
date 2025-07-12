@@ -63,7 +63,7 @@ const TeacherClassroom: React.FC = () => {
 
   const fetchAttendees = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/classroom/${code}/attendees`, {
+      const response = await fetch(`https://api.markmarketing.xyz/api/classroom/${code}/attendees`, {
         headers: { 'Accept': 'application/json' },
         credentials: 'include'
       });
@@ -116,7 +116,7 @@ const TeacherClassroom: React.FC = () => {
     formData.append('file', blob, `classroom-${code}-${Date.now()}.webm`);
 
     try {
-      const uploadResponse = await fetch('http://localhost:8080/api/upload', {
+      const uploadResponse = await fetch('https://api.markmarketing.xyz/api/upload', {
         method: 'POST',
         body: formData,
         credentials: 'include'
@@ -124,7 +124,7 @@ const TeacherClassroom: React.FC = () => {
       if (!uploadResponse.ok) throw new Error('Failed to upload recording');
       const { url } = await uploadResponse.json();
 
-      const saveResponse = await fetch(`http://localhost:8080/api/classroom/${code}/recording`, {
+      const saveResponse = await fetch(`https://api.markmarketing.xyz/api/classroom/${code}/recording`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url }),
